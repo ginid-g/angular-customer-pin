@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <h3>Create Customer</h3>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="customerForm" (submit)="save()">
+    <div class="form-group">
+      <label for="title">Title *</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        class="form-control"
+        formControlName="title"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="region">Region *</label>
+      <ngx-select
+        [items]="regions"
+        formControlName="region"
+        (select)="onRegionSelect($event)"
+      ></ngx-select>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country *</label>
+      <input
+        type="country"
+        name="country"
+        id="country"
+        class="form-control"
+        formControlName="country"
+        [attr.disabled]="true"
+      />
+    </div>
+
+    <div class="mt-2">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="customerForm.invalid"
+      >
+        Create Customer
+      </button>
+      <button class="btn btn-danger ms-2" type="button" (click)="close()">
+        Close
+      </button>
+    </div>
+  </form>
+</div>
